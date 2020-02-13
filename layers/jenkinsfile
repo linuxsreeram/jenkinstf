@@ -1,0 +1,30 @@
+pipeline {
+   agent any
+
+   stages {
+      stage('CheckoutModule1') {
+        steps {
+            //sh 'mkdir -p Module1'
+            //dir("Module1")
+            //{
+                git branch: "master",
+                credentialsId: '0a620bf4-eead-4ec4-8336-61fb7e83114a',
+                url: 'https://dsreeram@bitbucket.org/dsreeram/jenkins_setup.git'
+            //}
+        }
+      }
+      stage('initialize and plan') {
+        steps {
+          sh 'terraform -version'
+          //dir("Module1")
+          sh 'terraform init'
+          sh 'terraform plan -out=plan'
+              }
+        }
+      stage('terraform apply with autoapproval') {
+          steps {
+              sh 'terraform apply -auto-approve'
+          }
+      }
+    }
+}

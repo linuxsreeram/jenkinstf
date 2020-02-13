@@ -1,0 +1,12 @@
+variable  "username" {}
+variable "region" {}
+variable "cidr_block" {}
+variable "dns_support" {}
+variable "dns_hostnames" {}
+variable "subnet_cidr" {}
+variable "publicip_on_launch" {}
+variable "igw_tag" {}
+variable "rtb_tag" {}
+variable "ami_id" {}
+variable "instance" {}
+variable "key" {}
